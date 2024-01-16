@@ -1,0 +1,25 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        StringBuffer [] arr = new StringBuffer[numRows];
+        
+        for(int i=0; i<numRows; i++) arr[i] = new StringBuffer();
+
+        int i =0;
+        int n = s.length();
+        while(i<n){
+
+            for (int ind = 0; ind<numRows && i<n; ind++){
+                arr[ind].append(s.charAt(i++));
+            }
+
+            for(int ind = numRows - 2; ind >0 && i <n; ind--){
+                arr[ind].append(s.charAt(i++));
+            }
+        }
+        StringBuffer A = new StringBuffer();
+        for(StringBuffer al : arr){
+            A.append(al);
+        }
+        return A.toString();
+    }
+}
