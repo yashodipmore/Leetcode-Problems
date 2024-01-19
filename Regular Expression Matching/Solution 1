@@ -1,0 +1,20 @@
+class Solution {
+    public boolean isMatch(String text, String pattern) {
+//      This will help us at the end mainly for the else part given below.
+        if(pattern.length() == 0)
+           return text.length() == 0;
+//      here is the condition if * encountered and then we are focusion how to handle the cases
+        if(pattern.length() > 1 && pattern.charAt(1) == '*'){
+            if(isMatch(text, pattern.substring(2)))
+               return true;
+            if(text.length() > 0 && (pattern.charAt(0) == '.' || text.charAt(0) == pattern.charAt(0)))
+                return isMatch(text.substring(1), pattern);
+            return false;
+        }else{
+//      here we just have to check if characters are eqal to each other else if '.' is present working as single integer
+            if(text.length() > 0 && (pattern.charAt(0) == '.' || text.charAt(0) == pattern.charAt(0)))
+                return isMatch(text.substring(1), pattern.substring(1));
+        }
+        return false;
+    }
+}
