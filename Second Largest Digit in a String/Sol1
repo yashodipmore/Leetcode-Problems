@@ -1,0 +1,16 @@
+class Solution {
+    public int secondHighest(String s) {
+        s=s.replaceAll("[a-zA-Z]","").trim();
+        char[] str = s.toCharArray();
+        Arrays.sort(str);
+        Set<Character> set = new HashSet<>();
+        for(char c : str){
+            set.add(c);
+        }
+        Character[] out = set.toArray(new Character [set.size()]);
+        if(out.length <= 1) {
+            return -1;
+        }
+        return (Integer.parseInt(String.valueOf(out[out.length-2])));
+    }
+}
